@@ -1,13 +1,21 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { DashboardLayout } from '@/components/layout/DashboardLayout';
+import { WelcomeHero } from '@/components/dashboard/WelcomeHero';
+import { QuickActions } from '@/components/dashboard/QuickActions';
+import { KPICards } from '@/components/dashboard/KPICards';
+import { MonitoringChart } from '@/components/dashboard/MonitoringChart';
+import { SiteCards } from '@/components/dashboard/SiteCards';
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <DashboardLayout>
+      <div className="space-y-8">
+        <WelcomeHero />
+        <QuickActions />
+        <KPICards />
+        <MonitoringChart />
+        <SiteCards />
       </div>
-    </div>
+    </DashboardLayout>
   );
 };
 
