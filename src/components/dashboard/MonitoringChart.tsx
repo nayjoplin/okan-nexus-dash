@@ -90,34 +90,74 @@ export const MonitoringChart = () => {
           </Tabs>
         </div>
 
-        <div className="h-80">
+        <div className="h-80 w-full">
           <ResponsiveContainer width="100%" height="100%">
             {chartType === 'line' ? (
-              <LineChart data={lineData}>
+              <LineChart 
+                data={lineData}
+                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+              >
                 <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                <XAxis dataKey="name" stroke="hsl(var(--muted-foreground))" />
-                <YAxis stroke="hsl(var(--muted-foreground))" />
+                <XAxis 
+                  dataKey="name" 
+                  stroke="hsl(var(--muted-foreground))" 
+                  fontSize={12}
+                />
+                <YAxis 
+                  stroke="hsl(var(--muted-foreground))" 
+                  fontSize={12}
+                />
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: 'hsl(var(--card))', 
+                    backgroundColor: 'hsl(var(--popover))', 
                     border: '1px solid hsl(var(--border))',
-                    borderRadius: '8px'
+                    borderRadius: '8px',
+                    color: 'hsl(var(--popover-foreground))'
                   }} 
                 />
-                <Line type="monotone" dataKey="visitors" stroke="hsl(var(--primary))" strokeWidth={2} />
-                <Line type="monotone" dataKey="conversions" stroke="hsl(var(--secondary))" strokeWidth={2} />
-                <Line type="monotone" dataKey="bounce" stroke="hsl(var(--accent))" strokeWidth={2} />
+                <Line 
+                  type="monotone" 
+                  dataKey="visitors" 
+                  stroke="hsl(var(--primary))" 
+                  strokeWidth={2}
+                  dot={false}
+                />
+                <Line 
+                  type="monotone" 
+                  dataKey="conversions" 
+                  stroke="hsl(var(--secondary))" 
+                  strokeWidth={2}
+                  dot={false}
+                />
+                <Line 
+                  type="monotone" 
+                  dataKey="bounce" 
+                  stroke="hsl(var(--accent))" 
+                  strokeWidth={2}
+                  dot={false}
+                />
               </LineChart>
             ) : (
-              <BarChart data={lineData}>
+              <BarChart 
+                data={lineData}
+                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+              >
                 <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                <XAxis dataKey="name" stroke="hsl(var(--muted-foreground))" />
-                <YAxis stroke="hsl(var(--muted-foreground))" />
+                <XAxis 
+                  dataKey="name" 
+                  stroke="hsl(var(--muted-foreground))" 
+                  fontSize={12}
+                />
+                <YAxis 
+                  stroke="hsl(var(--muted-foreground))" 
+                  fontSize={12}
+                />
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: 'hsl(var(--card))', 
+                    backgroundColor: 'hsl(var(--popover))', 
                     border: '1px solid hsl(var(--border))',
-                    borderRadius: '8px'
+                    borderRadius: '8px',
+                    color: 'hsl(var(--popover-foreground))'
                   }} 
                 />
                 <Bar dataKey="visitors" fill="hsl(var(--primary))" />

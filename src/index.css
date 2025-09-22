@@ -129,24 +129,45 @@
     grid-template-areas: 
       "sidebar header header"
       "sidebar main rightpanel";
-    grid-template-columns: var(--sidebar-width) 1fr var(--right-panel-width);
-    grid-template-rows: var(--header-height) 1fr;
+    grid-template-columns: 280px 1fr 300px;
+    grid-template-rows: 72px 1fr;
     height: 100vh;
+    width: 100vw;
+    overflow: hidden;
   }
   
   .dashboard-layout.collapsed {
-    grid-template-columns: var(--sidebar-collapsed) 1fr var(--right-panel-width);
+    grid-template-columns: 80px 1fr 300px;
   }
   
-  .sidebar { grid-area: sidebar; }
-  .header { grid-area: header; }
-  .main { grid-area: main; }
-  .rightpanel { grid-area: rightpanel; }
+  .sidebar { 
+    grid-area: sidebar; 
+    overflow-y: auto;
+    border-right: 1px solid hsl(var(--border));
+  }
+  .header { 
+    grid-area: header; 
+    border-bottom: 1px solid hsl(var(--border));
+  }
+  .main { 
+    grid-area: main; 
+    overflow-y: auto;
+    background: hsl(var(--background));
+  }
+  .rightpanel { 
+    grid-area: rightpanel; 
+    overflow-y: auto;
+    border-left: 1px solid hsl(var(--border));
+    background: hsl(var(--card));
+  }
   
   /* Responsive Layout */
   @media (max-width: 1440px) {
     .dashboard-layout {
-      grid-template-columns: var(--sidebar-width) 1fr 280px;
+      grid-template-columns: 280px 1fr 280px;
+    }
+    .dashboard-layout.collapsed {
+      grid-template-columns: 80px 1fr 280px;
     }
   }
   
@@ -156,8 +177,14 @@
         "header header"
         "main rightpanel";
       grid-template-columns: 1fr 280px;
+      grid-template-rows: 72px 1fr;
     }
-    .sidebar { display: none; }
+    .dashboard-layout.collapsed {
+      grid-template-columns: 1fr 280px;
+    }
+    .sidebar { 
+      display: none; 
+    }
   }
   
   @media (max-width: 768px) {
@@ -166,8 +193,14 @@
         "header"
         "main";
       grid-template-columns: 1fr;
+      grid-template-rows: 72px 1fr;
     }
-    .rightpanel { display: none; }
+    .dashboard-layout.collapsed {
+      grid-template-columns: 1fr;
+    }
+    .sidebar, .rightpanel { 
+      display: none; 
+    }
   }
 }
 
@@ -176,6 +209,8 @@
   .card-okan {
     @apply bg-card text-card-foreground rounded-2xl border shadow-sm;
     padding: 24px;
+    position: relative;
+    z-index: 1;
   }
   
   .card-kpi {
@@ -183,7 +218,7 @@
   }
   
   .card-site {
-    @apply card-okan w-80 h-56 flex flex-col justify-between;
+    @apply card-okan max-w-sm h-56 flex flex-col justify-between;
   }
   
   /* Button Variants */
@@ -210,5 +245,14 @@
   
   .btn-outline {
     @apply btn-okan border border-border bg-transparent hover:bg-accent hover:text-accent-foreground;
+  }
+  
+  /* Fix for Recharts SVG issues */
+  .recharts-wrapper {
+    position: relative !important;
+  }
+  
+  .recharts-wrapper svg {
+    overflow: visible !important;
   }
 }

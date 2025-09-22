@@ -89,21 +89,21 @@ export const SiteCards = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
         {currentSites.map((site) => {
           const statusInfo = getStatusInfo(site.status);
           
           return (
-            <div key={site.id} className="card-site">
+            <div key={site.id} className="card-okan flex flex-col min-h-[220px] max-w-full">
               <div className="flex-1">
                 <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <h4 className="font-semibold text-lg">{site.name}</h4>
-                    <p className="text-sm text-muted-foreground">{site.description}</p>
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-semibold text-lg truncate">{site.name}</h4>
+                    <p className="text-sm text-muted-foreground truncate">{site.description}</p>
                   </div>
-                  <Badge variant={statusInfo.variant} className="flex items-center space-x-1">
+                  <Badge variant={statusInfo.variant} className="flex items-center space-x-1 ml-2 flex-shrink-0">
                     <div className={`w-2 h-2 rounded-full ${statusInfo.color}`}></div>
-                    <span>{statusInfo.label}</span>
+                    <span className="text-xs">{statusInfo.label}</span>
                   </Badge>
                 </div>
 
@@ -117,16 +117,16 @@ export const SiteCards = () => {
               </div>
 
               <div className="flex items-center space-x-2 pt-4 border-t border-border">
-                <Button variant="outline" size="sm" className="flex-1">
-                  <ExternalLink className="h-4 w-4 mr-2" />
+                <Button variant="outline" size="sm" className="flex-1 text-xs">
+                  <ExternalLink className="h-3 w-3 mr-1" />
                   Ver online
                 </Button>
-                <Button variant="outline" size="sm" className="flex-1">
-                  <Edit className="h-4 w-4 mr-2" />
-                  Editar site
+                <Button variant="outline" size="sm" className="flex-1 text-xs">
+                  <Edit className="h-3 w-3 mr-1" />
+                  Editar
                 </Button>
-                <Button variant="outline" size="sm">
-                  <Database className="h-4 w-4" />
+                <Button variant="outline" size="sm" className="px-2">
+                  <Database className="h-3 w-3" />
                 </Button>
               </div>
             </div>

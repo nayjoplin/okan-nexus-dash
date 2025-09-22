@@ -10,6 +10,9 @@ interface DashboardLayoutProps {
 export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
+  // Debug: Log layout state
+  console.log('DashboardLayout rendered:', { sidebarCollapsed });
+
   return (
     <div className={`dashboard-layout ${sidebarCollapsed ? 'collapsed' : ''}`}>
       <Sidebar 
@@ -17,8 +20,10 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
         onToggle={() => setSidebarCollapsed(!sidebarCollapsed)} 
       />
       <Header />
-      <main className="main overflow-auto p-6 max-w-screen-xl mx-auto">
-        {children}
+      <main className="main p-6">
+        <div className="max-w-7xl mx-auto">
+          {children}
+        </div>
       </main>
       <RightPanel />
     </div>

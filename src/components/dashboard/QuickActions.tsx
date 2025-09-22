@@ -13,14 +13,14 @@ export const QuickActions = () => {
   return (
     <div className="card-okan">
       <h3 className="font-semibold mb-6">Ações Rápidas</h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3">
         {actions.map((action, index) => (
           <Button
             key={index}
             variant={action.variant}
-            className="flex flex-col items-center justify-center h-20 space-y-2"
+            className="flex flex-col items-center justify-center h-16 p-2 space-y-1"
           >
-            <action.icon className="h-5 w-5" />
+            <action.icon className="h-4 w-4" />
             <span className="text-xs font-medium text-center leading-tight">
               {action.label}
             </span>
