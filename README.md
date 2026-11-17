@@ -1,4 +1,15 @@
-# Welcome to your Lovable project
+<div align="center">
+
+![Okan Nexus](assets/cover.svg)
+
+# Okan Nexus
+
+Projeto de painel digital com foco em organização de uma experiência de produto
+
+**Projeto autoral**
+
+</div>
+
 
 ## Project info
 
